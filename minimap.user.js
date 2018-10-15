@@ -70,6 +70,7 @@ window.addEventListener('load', function () {
         '</div>';
     document.body.appendChild(div);
     minimap = document.getElementById("minimap");
+  range = Math.floor(((minimap.width/2)*(1/zoomlevel))-1);
     minimap_board = document.getElementById("minimap-board");
     minimap_cursor = document.getElementById("minimap-cursor");
     minimap.width = minimap.offsetWidth;
@@ -122,6 +123,7 @@ window.addEventListener('load', function () {
     }, false);
     document.getElementById("zoom-plus").addEventListener('mouseup', function (e) {
         zooming_in = false;
+      //zoomlevel++;
     }, false);
     document.getElementById("zoom-minus").addEventListener('mouseup', function (e) {
         zooming_out = false;
@@ -221,6 +223,7 @@ function zoomIn() {
     if (!zooming_in)
         return;
     zoomlevel = zoomlevel * 1.1;
+  range = Math.floor(((minimap.width/2)*(1/zoomlevel))-1);
     if (zoomlevel > 45) {
         zoomlevel = 45;
         return;
@@ -235,6 +238,7 @@ function zoomOut() {
     if (!zooming_out)
         return;
     zoomlevel = zoomlevel / 1.1;
+  range = Math.floor(((minimap.width/2)*(1/zoomlevel))-1);
     if (zoomlevel < 1) {
         zoomlevel = 1;
         return;
